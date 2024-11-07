@@ -1,0 +1,17 @@
+services:
+  strapi-db:
+    container_name: strapi-db
+    image: postgres:latest
+    environment:
+      POSTGRES_USER: root
+      POSTGRES_PASSWORD: root
+      POSTGRES_DB: strapi
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgresql:/var/lib/postgresql
+      - postgresql_data:/var/lib/postgresql/data
+
+volumes:
+  postgresql:
+  postgresql_data:
