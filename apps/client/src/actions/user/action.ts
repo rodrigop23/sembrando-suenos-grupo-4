@@ -1,7 +1,6 @@
 "use server";
 
 import envs from "@/config/envs";
-import bcrypt from "bcrypt";
 import { RegisterUserType } from "@/lib/zod-schemas/user-schema";
 import { setTokenCookie } from "@/utils/session";
 import { GenericResponse } from "@/interface/generic-interface";
@@ -15,12 +14,10 @@ export const registerUserAction = async (
       envs.NEXT_PUBLIC_STRAPI_URL
     );
 
-    const hashedPassword = await bcrypt.hash(userData.password, 10);
-
     const newData = {
       username: userData.username,
       email: userData.email,
-      password: hashedPassword,
+      password: userData.password,
     };
 
     const response = await fetch(url.toString(), {
