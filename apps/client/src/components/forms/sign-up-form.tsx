@@ -132,9 +132,11 @@ export default function SignUpForm() {
                 )}
               />
 
-              <p className="text-[0.8rem] font-medium text-destructive">
-                {genericError}
-              </p>
+              {genericError && (
+                <p className="text-[0.8rem] font-medium text-destructive">
+                  {genericError}
+                </p>
+              )}
 
               <Button type="submit" className="w-full">
                 {isSubmitting && <Icons.spinner className="animate-spin" />}
