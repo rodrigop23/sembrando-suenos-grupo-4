@@ -23,8 +23,14 @@ import {
   FormLabel,
   FormMessage,
 } from "@/components/ui/form";
+import { loginUserAction } from "@/actions/user/action";
+import { useRouter } from "next/navigation";
+import { useState } from "react";
 
 export default function SignInForm() {
+  const [genericError, setGenericError] = useState<string | null>(null);
+  const router = useRouter();
+
   const form = useForm<LoginUserType>({
     resolver: zodResolver(loginUserSchema),
     defaultValues: {
@@ -35,14 +41,20 @@ export default function SignInForm() {
 
   const isSubmitting = form.formState.isSubmitting;
 
-  const onSubmit = (data: LoginUserType) => {
-    // return promise that resolves after 2 seconds
-    return new Promise((resolve) => {
-      setTimeout(() => {
-        console.log(data);
-        resolve("");
-      }, 2000);
-    });
+  const onSubmit = async (data: LoginUserType) => {
+    try {
+      const result = await loginUserAction(data);
+
+      if (!result.ok) {
+        return setGenericError(result.message);
+      }
+
+      router.push("/");
+
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    } catch (error: any) {
+      setGenericError(error.message);
+    }
   };
 
   return (
@@ -92,6 +104,13 @@ export default function SignInForm() {
                   </FormItem>
                 )}
               />
+
+              {genericError && (
+                <p className="text-[0.8rem] font-medium text-destructive">
+                  {genericError}
+                </p>
+              )}
+
               <Button type="submit" className="w-full">
                 {isSubmitting && <Icons.spinner className="animate-spin" />}
                 Iniciar Sesión
