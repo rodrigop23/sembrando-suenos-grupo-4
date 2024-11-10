@@ -39,8 +39,15 @@ export default function SignUpForm() {
     },
   });
 
+  const isSubmitting = form.formState.isSubmitting;
+
   const onSubmit = (data: LoginUserType) => {
-    console.log(data);
+    return new Promise((resolve) => {
+      setTimeout(() => {
+        console.log(data);
+        resolve("");
+      }, 2000);
+    });
   };
 
   return (
@@ -54,7 +61,7 @@ export default function SignUpForm() {
       <CardContent>
         <Form {...form}>
           <form onSubmit={form.handleSubmit(onSubmit)}>
-            <div className="grid gap-4">
+            <fieldset className="grid gap-4" disabled={isSubmitting}>
               <FormField
                 control={form.control}
                 name="username"
@@ -112,6 +119,7 @@ export default function SignUpForm() {
               />
 
               <Button type="submit" className="w-full">
+                {isSubmitting && <Icons.spinner className="animate-spin" />}
                 Iniciar Sesión
               </Button>
 
@@ -130,7 +138,7 @@ export default function SignUpForm() {
                 <Icons.google />
                 Google
               </Button>
-            </div>
+            </fieldset>
             <div className="mt-4 text-center text-sm">
               Ya tienes una cuenta?{" "}
               <Link href="sign-in" className="underline">
