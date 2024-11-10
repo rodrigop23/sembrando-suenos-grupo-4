@@ -1,5 +1,12 @@
 "use client";
 
+import { useForm } from "react-hook-form";
+import { zodResolver } from "@hookform/resolvers/zod";
+
+import { useState } from "react";
+import Link from "next/link";
+import { useRouter } from "next/navigation";
+
 import { Button } from "@/components/ui/button";
 import {
   Card,
@@ -9,16 +16,6 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
-import Link from "next/link";
-import { Icons } from "../icons";
-import { useForm } from "react-hook-form";
-import { zodResolver } from "@hookform/resolvers/zod";
-import {
-  LoginUserType,
-  registerUserSchema,
-  RegisterUserType,
-} from "@/lib/zod-schemas/user-schema";
-
 import {
   Form,
   FormControl,
@@ -27,8 +24,18 @@ import {
   FormLabel,
   FormMessage,
 } from "@/components/ui/form";
+import { Icons } from "../icons";
+
+import {
+  registerUserSchema,
+  RegisterUserType,
+} from "@/lib/zod-schemas/user-schema";
+import { registerUserAction } from "@/actions/user/action";
 
 export default function SignUpForm() {
+  const [genericError, setGenericError] = useState<string | null>(null);
+  const router = useRouter();
+
   const form = useForm<RegisterUserType>({
     resolver: zodResolver(registerUserSchema),
     defaultValues: {
@@ -41,13 +48,20 @@ export default function SignUpForm() {
 
   const isSubmitting = form.formState.isSubmitting;
 
-  const onSubmit = (data: LoginUserType) => {
-    return new Promise((resolve) => {
-      setTimeout(() => {
-        console.log(data);
-        resolve("");
-      }, 2000);
-    });
+  const onSubmit = async (data: RegisterUserType) => {
+    try {
+      const result = await registerUserAction(data);
+
+      if (!result.ok) {
+        return setGenericError(result.message);
+      }
+
+      router.push("/");
+
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    } catch (error: any) {
+      setGenericError(error.message);
+    }
   };
 
   return (
@@ -118,9 +132,13 @@ export default function SignUpForm() {
                 )}
               />
 
+              <p className="text-[0.8rem] font-medium text-destructive">
+                {genericError}
+              </p>
+
               <Button type="submit" className="w-full">
                 {isSubmitting && <Icons.spinner className="animate-spin" />}
-                Iniciar Sesión
+                Registrarse
               </Button>
 
               <div className="relative">
