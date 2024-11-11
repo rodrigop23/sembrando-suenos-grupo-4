@@ -19,8 +19,8 @@ const LinkButton = ({ name, path }: LinkButtonProps) => {
     <Link
       href={path}
       className={cn(
-        "text-base w-full flex-1 text-center hover:bg-accent hover:text-accent-foreground px-2 py-1 rounded-md",
-        isActive ? "bg-accent text-accent-foreground" : ""
+        "text-sm font-medium hover:text-primary transition-colors",
+        isActive ? "text-primary" : "text-muted-foreground"
       )}
     >
       <span>{name}</span>

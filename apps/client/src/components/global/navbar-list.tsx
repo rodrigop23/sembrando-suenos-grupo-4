@@ -4,7 +4,7 @@ import { useRouter } from "next/navigation";
 import LinkButton from "../link-button";
 import { Button } from "../ui/button";
 
-export default function NarvarList() {
+export default function NarbarList() {
   const router = useRouter();
 
   return (
