@@ -1,4 +1,4 @@
-export interface GenericResponse {
+export interface IGenericResponse {
   ok: boolean;
   message: string;
 }
