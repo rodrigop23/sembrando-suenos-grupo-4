@@ -58,7 +58,7 @@ export default function SignInForm() {
   };
 
   return (
-    <Card className="w-[500px]">
+    <Card className="w-[400px] sm:w-[500px]">
       <CardHeader>
         <CardTitle className="text-2xl">Iniciar Sesión</CardTitle>
         <CardDescription>
