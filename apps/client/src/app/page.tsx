@@ -1,5 +1,4 @@
-import { getCurrentUser, logoutUserAction } from "@/actions/user/action";
-import { Button } from "@/components/ui/button";
+import { getCurrentUser } from "@/actions/user/action";
 import { redirect } from "next/navigation";
 
 export default async function Home() {
@@ -9,11 +8,5 @@ export default async function Home() {
     redirect("/sign-in");
   }
 
-  return (
-    <div>
-      <form action={logoutUserAction}>
-        <Button type="submit">Cerrar sesión</Button>
-      </form>
-    </div>
-  );
+  return <div>Home</div>;
 }

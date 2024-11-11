@@ -116,7 +116,9 @@ export default function Footer() {
             </div>
           </div>
         </div>
+
         <Separator className="my-8 bg-primary/10" />
+
         <div className="text-center text-sm text-muted-foreground">
           © {new Date().getFullYear()} Sembrando Sueños. Todos los derechos
           reservados.

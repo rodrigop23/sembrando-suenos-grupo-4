@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { Roboto } from "next/font/google";
 import "./globals.css";
-import NavBar from "@/components/global/navbar";
+import NavBarWrapper from "@/components/global/navbar/navbar-wrapper";
 import Footer from "@/components/global/footer";
 
 const roboto = Roboto({
@@ -25,7 +25,7 @@ export default function RootLayout({
       <body
         className={`${roboto.variable} font-sans antialiased min-h-screen flex flex-col`}
       >
-        <NavBar />
+        <NavBarWrapper />
         <main className="flex-1 flex flex-col">{children}</main>
         <Footer />
       </body>

@@ -107,7 +107,7 @@ export const getCurrentUser = cache(async (): Promise<IUser | null> => {
     const url = new URL("/api/users/me", envs.NEXT_PUBLIC_STRAPI_URL);
 
     url.search = qs.stringify({
-      fields: ["email"],
+      fields: ["email", "username"],
     });
 
     const token = getToken();
