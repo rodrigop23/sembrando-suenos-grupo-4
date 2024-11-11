@@ -3,14 +3,15 @@
 import envs from "@/config/envs";
 import { LoginUserType, RegisterUserType } from "@/lib/zod-schemas/user-schema";
 import { deleteTokenCookie, getToken, setTokenCookie } from "@/utils/session";
-import { GenericResponse } from "@/interface/generic-interface";
+import { IGenericResponse } from "@/interface/generic.interface";
 import qs from "qs";
 import { cache } from "react";
 import { redirect } from "next/navigation";
+import { IUser } from "@/interface/user.interface";
 
 export const registerUserAction = async (
   userData: RegisterUserType
-): Promise<GenericResponse> => {
+): Promise<IGenericResponse> => {
   try {
     const url = new URL(
       "/api/auth/local/register",
@@ -59,7 +60,7 @@ export const registerUserAction = async (
 
 export const loginUserAction = async (
   userData: LoginUserType
-): Promise<GenericResponse> => {
+): Promise<IGenericResponse> => {
   try {
     const url = new URL("/api/auth/local", envs.NEXT_PUBLIC_STRAPI_URL);
 
@@ -101,7 +102,7 @@ export const loginUserAction = async (
   }
 };
 
-export const getCurrentUser = cache(async () => {
+export const getCurrentUser = cache(async (): Promise<IUser | null> => {
   try {
     const url = new URL("/api/users/me", envs.NEXT_PUBLIC_STRAPI_URL);
 
