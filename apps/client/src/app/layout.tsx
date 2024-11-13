@@ -3,6 +3,8 @@ import { Roboto } from "next/font/google";
 import "./globals.css";
 import NavBarWrapper from "@/components/global/navbar/navbar-wrapper";
 import Footer from "@/components/global/footer";
+import { Suspense } from "react";
+import GlobalLoading from "@/components/global/global-loading";
 
 const roboto = Roboto({
   subsets: ["latin"],
@@ -26,7 +28,9 @@ export default function RootLayout({
         className={`${roboto.variable} font-sans antialiased min-h-screen flex flex-col`}
       >
         <NavBarWrapper />
-        <main className="flex-1 flex flex-col">{children}</main>
+        <main className="flex-1 flex flex-col">
+          <Suspense fallback={<GlobalLoading />}>{children}</Suspense>
+        </main>
         <Footer />
       </body>
     </html>
