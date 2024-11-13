@@ -3,7 +3,7 @@ import Activities from "@/components/activities/activities";
 import CustomPagination from "@/components/custom-pagination";
 import SearchInput from "@/components/search-input";
 
-export default async function ActivityPage({
+export default async function ActivitiesPage({
   searchParams,
 }: Readonly<{
   searchParams: { q: string; page: string };

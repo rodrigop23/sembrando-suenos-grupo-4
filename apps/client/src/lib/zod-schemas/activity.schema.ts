@@ -18,9 +18,26 @@ export const activitySchema = z.object({
   image: strapiImageSchema,
 });
 
+const requirementSchema = z.object({
+  id: z.number(),
+  description: z.string(),
+});
+
+const scheduleSchema = z.object({
+  id: z.number(),
+  time: z.string().transform((val) => val.slice(0, 5)),
+  description: z.string(),
+});
+
+export const activityDetailSchema = activitySchema.extend({
+  requirements: z.array(requirementSchema),
+  schedule: z.array(scheduleSchema),
+});
+
 export const activitiesSchema = z.object({
   data: z.array(activitySchema),
   meta: strapiMetaSchema,
 });
 
 export type ActivityType = z.infer<typeof activitySchema>;
+export type ActivityDetailType = z.infer<typeof activityDetailSchema>;
