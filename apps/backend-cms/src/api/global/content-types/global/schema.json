@@ -1,0 +1,49 @@
+{
+  "kind": "singleType",
+  "collectionName": "globals",
+  "info": {
+    "singularName": "global",
+    "pluralName": "globals",
+    "displayName": "Global"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "subtitle": {
+      "type": "string"
+    },
+    "description": {
+      "type": "text"
+    },
+    "image": {
+      "allowedTypes": [
+        "images"
+      ],
+      "type": "media",
+      "multiple": false
+    },
+    "aboutUsTitle": {
+      "type": "string"
+    },
+    "aboutUsDescription": {
+      "type": "text"
+    },
+    "misionTitle": {
+      "type": "string"
+    },
+    "misionDescription": {
+      "type": "text"
+    },
+    "visionTitle": {
+      "type": "string"
+    },
+    "visionDescription": {
+      "type": "text"
+    }
+  }
+}

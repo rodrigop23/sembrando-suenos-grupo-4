@@ -1,0 +1,66 @@
+{
+  "kind": "collectionType",
+  "collectionName": "activities",
+  "info": {
+    "singularName": "activity",
+    "pluralName": "activities",
+    "displayName": "Activity",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "title": {
+      "type": "string",
+      "required": true
+    },
+    "descripcion": {
+      "type": "text",
+      "required": true
+    },
+    "date": {
+      "type": "date",
+      "required": true
+    },
+    "time": {
+      "type": "time",
+      "required": true
+    },
+    "location": {
+      "type": "string",
+      "required": true
+    },
+    "image": {
+      "type": "media",
+      "multiple": false,
+      "required": true,
+      "allowedTypes": [
+        "images"
+      ]
+    },
+    "details": {
+      "type": "text"
+    },
+    "numberOfParticipants": {
+      "type": "integer",
+      "required": true
+    },
+    "requirements": {
+      "type": "component",
+      "repeatable": true,
+      "component": "activity.requirements"
+    },
+    "schedule": {
+      "type": "component",
+      "repeatable": true,
+      "component": "activity.schedule"
+    },
+    "organizer": {
+      "type": "string",
+      "required": true,
+      "default": "Sembrando Sueños"
+    }
+  }
+}

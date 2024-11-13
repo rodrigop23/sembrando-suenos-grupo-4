@@ -1,0 +1,14 @@
+{
+  "collectionName": "components_activity_requirements",
+  "info": {
+    "displayName": "Requirements",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "description": {
+      "type": "string",
+      "required": true
+    }
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "collectionName": "components_activity_schedules",
+  "info": {
+    "displayName": "Schedule"
+  },
+  "options": {},
+  "attributes": {
+    "time": {
+      "type": "time"
+    },
+    "description": {
+      "type": "string"
+    }
+  }
+}
