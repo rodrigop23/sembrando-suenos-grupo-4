@@ -84,7 +84,7 @@ export const getActivitiesDataAction = async (
   }
 };
 
-export const getActivity = async (id: string) => {
+export const getActivityDetailsAction = async (id: string) => {
   try {
     const queryString = qs.stringify({
       populate: {

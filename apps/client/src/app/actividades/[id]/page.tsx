@@ -1,4 +1,4 @@
-import { getActivity } from "@/actions/activity/actions";
+import { getActivityDetailsAction } from "@/actions/activity/actions";
 import ActivityDetail from "@/components/activities/activity-detail";
 import { ActivityDetailType } from "@/lib/zod-schemas/activity.schema";
 import { redirect } from "next/navigation";
@@ -10,7 +10,7 @@ export default async function ActivityPage({
 }) {
   const { id } = await params;
 
-  const result = await getActivity(id);
+  const result = await getActivityDetailsAction(id);
 
   if (!result.ok) {
     redirect("/actividades");
