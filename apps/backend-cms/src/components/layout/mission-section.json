@@ -1,0 +1,21 @@
+{
+  "collectionName": "components_layout_mission_sections",
+  "info": {
+    "displayName": "Missions Section",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string",
+      "required": true
+    },
+    "missions": {
+      "displayName": "Mission",
+      "type": "component",
+      "repeatable": true,
+      "component": "elements.mission",
+      "required": true
+    }
+  }
+}

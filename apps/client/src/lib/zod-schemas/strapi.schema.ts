@@ -10,6 +10,13 @@ export const strapiImageSchema = z.object({
   alternativeText: z.string(),
 });
 
+export const linkSchema = z.object({
+  id: z.number(),
+  url: z.string(),
+  text: z.string(),
+  isExternal: z.boolean(),
+});
+
 export const paginationSchema = z.object({
   page: z.number(),
   pageSize: z.number(),
