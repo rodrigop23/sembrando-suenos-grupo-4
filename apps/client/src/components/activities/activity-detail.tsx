@@ -10,12 +10,12 @@ import {
   Users,
   ArrowLeft,
   Heart,
-  Share2,
   CreditCard,
 } from "lucide-react";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { useRouter } from "next/navigation";
 import { ActivityDetailType } from "@/lib/zod-schemas/activity.schema";
+import { SocialShareDialog } from "../social-share-dialog";
 
 interface ActivityDetailsProps {
   data: ActivityDetailType;
@@ -83,7 +83,7 @@ export default function ActivityDetail({
             <div>
               <h3 className="text-xl font-semibold mb-2">Requisitos</h3>
               <ul className="list-disc list-inside text-muted-foreground">
-                {activity.requirements.map((req: any) => (
+                {activity.requirements.map((req) => (
                   <li key={req.id}>{req.description}</li>
                 ))}
               </ul>
@@ -91,7 +91,7 @@ export default function ActivityDetail({
             <div>
               <h3 className="text-xl font-semibold mb-2">Cronograma</h3>
               <ul className="space-y-2">
-                {activity.schedule.map((item: any) => (
+                {activity.schedule.map((item) => (
                   <li key={item.id} className="flex items-start">
                     <span className="font-semibold mr-2">{item.time}</span>
                     <span className="text-muted-foreground">
@@ -125,9 +125,7 @@ export default function ActivityDetail({
                 <Button variant="outline" size="icon">
                   <Heart className="h-4 w-4" />
                 </Button>
-                <Button variant="outline" size="icon">
-                  <Share2 className="h-4 w-4" />
-                </Button>
+                <SocialShareDialog />
                 <Button variant="outline" size="icon">
                   <CreditCard className="h-4 w-4" />
                 </Button>
