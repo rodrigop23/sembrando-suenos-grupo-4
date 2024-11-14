@@ -13,6 +13,7 @@ import { ZodError, z } from "zod";
 const EnvSchema = z.object({
   NODE_ENV: z.string().default("development"),
   NEXT_PUBLIC_STRAPI_URL: z.string(),
+  NEXT_PUBLIC_HOST_URL: z.string(),
 });
 
 export type EnvSchema = z.infer<typeof EnvSchema>;
