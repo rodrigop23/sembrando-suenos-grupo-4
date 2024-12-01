@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { Button } from "@/components/ui/button";
+import { Button, buttonVariants } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import {
   Calendar,
@@ -13,9 +13,10 @@ import {
   CreditCard,
 } from "lucide-react";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
-import { useRouter } from "next/navigation";
 import { ActivityDetailType } from "@/lib/zod-schemas/activity.schema";
 import { SocialShareDialog } from "../social-share-dialog";
+import { cn } from "@/lib/utils";
+import Link from "next/link";
 
 interface ActivityDetailsProps {
   data: ActivityDetailType;
@@ -24,17 +25,20 @@ interface ActivityDetailsProps {
 export default function ActivityDetail({
   data: activity,
 }: ActivityDetailsProps) {
-  const router = useRouter();
-
   return (
     <div className="container mx-auto px-4 py-8 max-w-4xl">
-      <Button
-        variant="ghost"
-        className="mb-4"
-        onClick={() => router.push("/actividades")}
+      <Link
+        href="/actividades"
+        className={cn(
+          buttonVariants({
+            variant: "ghost",
+          }),
+          "mb-6"
+        )}
       >
         <ArrowLeft className="mr-2 h-4 w-4" /> Volver a actividades
-      </Button>
+      </Link>
+
       <div className="grid gap-6 md:grid-cols-3">
         <Card className="md:col-span-2">
           <div className="relative h-64 md:h-96">

@@ -3,7 +3,7 @@
 import { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { Button } from "@/components/ui/button";
+import { Button, buttonVariants } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Calendar, Clock, MapPin, ArrowLeft, CheckCircle } from "lucide-react";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
@@ -11,6 +11,7 @@ import { Badge } from "@/components/ui/badge";
 import { Progress } from "@/components/ui/progress";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { SocialShareDialog } from "@/components/social-share-dialog";
+import { cn } from "@/lib/utils";
 
 // Esta función simularía la obtención de datos de un evento específico
 const getEventDetails = (id: number) => {
@@ -66,7 +67,12 @@ export default function EventDetail({ id = 1 }: { id?: number }) {
     <div className="container mx-auto px-4 py-8 max-w-5xl">
       <Link
         href="/eventos"
-        className="inline-flex items-center text-primary hover:underline mb-6"
+        className={cn(
+          buttonVariants({
+            variant: "ghost",
+          }),
+          "mb-6"
+        )}
       >
         <ArrowLeft className="mr-2 h-4 w-4" /> Volver a eventos
       </Link>
