@@ -59,7 +59,7 @@
     },
     "organizer": {
       "type": "string",
-      "required": true,
+      "required": false,
       "default": "Sembrando Sueños"
     }
   }

@@ -64,6 +64,34 @@ export interface ElementsProyect extends Struct.ComponentSchema {
   };
 }
 
+export interface ElementsSocialLink extends Struct.ComponentSchema {
+  collectionName: 'components_elements_social_links';
+  info: {
+    displayName: 'Social Link';
+  };
+  attributes: {
+    icon: Schema.Attribute.Enumeration<
+      ['Facebook', 'Twitter', 'Linkedin', 'Mail']
+    >;
+    url: Schema.Attribute.String & Schema.Attribute.Required;
+  };
+}
+
+export interface ElementsTeamMember extends Struct.ComponentSchema {
+  collectionName: 'components_elements_team_members';
+  info: {
+    description: '';
+    displayName: 'Team Member';
+  };
+  attributes: {
+    description: Schema.Attribute.Text;
+    image: Schema.Attribute.Media<'images'> & Schema.Attribute.Required;
+    job: Schema.Attribute.String & Schema.Attribute.Required;
+    name: Schema.Attribute.String & Schema.Attribute.Required;
+    socialLink: Schema.Attribute.Component<'elements.social-link', true>;
+  };
+}
+
 export interface LayoutGetInvolvedSection extends Struct.ComponentSchema {
   collectionName: 'components_layout_get_involved_sections';
   info: {
@@ -129,6 +157,8 @@ declare module '@strapi/strapi' {
       'elements.link': ElementsLink;
       'elements.mission': ElementsMission;
       'elements.proyect': ElementsProyect;
+      'elements.social-link': ElementsSocialLink;
+      'elements.team-member': ElementsTeamMember;
       'layout.get-involved-section': LayoutGetInvolvedSection;
       'layout.hero-section': LayoutHeroSection;
       'layout.mission-section': LayoutMissionSection;

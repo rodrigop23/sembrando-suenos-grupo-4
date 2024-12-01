@@ -12,7 +12,7 @@ export const getHomeDataAction = async () => {
               populate: {
                 fields: ["title", "subtitle"],
                 image: {
-                  fields: ["url", "alternativeText"],
+                  fields: ["url"],
                 },
                 ctaButton: {
                   populate: true,
@@ -26,7 +26,7 @@ export const getHomeDataAction = async () => {
                   populate: {
                     fields: ["title", "description", "icon"],
                     image: {
-                      fields: ["url", "alternativeText"],
+                      fields: ["url"],
                     },
                   },
                 },
@@ -39,7 +39,7 @@ export const getHomeDataAction = async () => {
                   populate: {
                     fields: ["title", "subtitle", "description"],
                     image: {
-                      fields: ["url", "alternativeText"],
+                      fields: ["url"],
                     },
                   },
                 },
@@ -80,6 +80,8 @@ export const getHomeDataAction = async () => {
     }
 
     if (data.error) {
+      console.log(data);
+
       return {
         ok: false,
         message: data?.error?.message,
@@ -87,6 +89,8 @@ export const getHomeDataAction = async () => {
     }
 
     const validateSchema = await homePageSchema.safeParseAsync(data.data);
+
+    // console.log(validateSchema.error);
 
     if (!validateSchema.success) {
       return {
