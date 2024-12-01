@@ -1,4 +1,4 @@
-import { number, z } from "zod";
+import { z } from "zod";
 import { linkSchema, strapiImageSchema } from "./strapi.schema";
 
 const MissionSchema = z.object({
@@ -57,7 +57,7 @@ const BlockSchema = z.discriminatedUnion("__component", [
 ]);
 
 export const homePageSchema = z.object({
-  id: number(),
+  id: z.number(),
   documentId: z.string(),
   blocks: z.array(BlockSchema),
 });

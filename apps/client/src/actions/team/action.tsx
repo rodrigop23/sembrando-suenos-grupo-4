@@ -1,6 +1,7 @@
 "use server";
 
 import envs from "@/config/envs";
+import { teamMemberPageSchema } from "@/lib/zod-schemas/team.schema";
 import qs from "qs";
 
 export const getTeamDataAction = async () => {
@@ -10,7 +11,7 @@ export const getTeamDataAction = async () => {
         teamMember: {
           populate: {
             image: {
-              fields: ["url", "alternativeText"],
+              fields: ["url"],
             },
             socialLink: {
               populate: true,
@@ -46,19 +47,19 @@ export const getTeamDataAction = async () => {
       };
     }
 
-    // const validateSchema = await homePageSchema.safeParseAsync(data.data);
+    const validateSchema = await teamMemberPageSchema.safeParseAsync(data.data);
 
-    // if (!validateSchema.success) {
-    //   return {
-    //     ok: false,
-    //     message: validateSchema.error.errors,
-    //   };
-    // }
+    if (!validateSchema.success) {
+      return {
+        ok: false,
+        message: validateSchema.error.errors,
+      };
+    }
 
-    // return {
-    //   ok: true,
-    //   data: validateSchema.data.blocks,
-    // };
+    return {
+      ok: true,
+      data: validateSchema.data,
+    };
   } catch (error) {
     console.log(error);
 
