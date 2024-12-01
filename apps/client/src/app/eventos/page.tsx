@@ -129,7 +129,7 @@ export default function EventsPage() {
   const pageCount = Math.ceil(filteredEvents.length / eventsPerPage);
 
   return (
-    <div className="container mx-auto px-4 py-8">
+    <div className="max-w-7xl mx-auto px-4 py-8">
       <h1 className="text-3xl font-bold mb-8">Próximos Eventos</h1>
 
       <div className="flex flex-col sm:flex-row gap-4 mb-8">

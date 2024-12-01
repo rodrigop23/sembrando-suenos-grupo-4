@@ -19,7 +19,7 @@ export default async function ActivitiesPage({
   );
 
   return (
-    <div className="container mx-auto md:px-2 md:py-4 px-4 py-8">
+    <div className="max-w-7xl mx-auto md:px-2 md:py-4 px-4 py-8">
       <div className="mb-8">
         <h1 className="text-3xl font-bold mb-2">Actividades Benéficas</h1>
         <p className="text-muted-foreground mb-6">

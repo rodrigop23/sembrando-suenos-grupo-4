@@ -25,7 +25,7 @@ export default function Activities({ activity }: ActivitesProps) {
       <div className="relative h-48 w-full">
         <Image
           src={activity.image.url}
-          alt={activity.image.alternativeText}
+          alt={activity.title}
           sizes="100%"
           fill
           style={{

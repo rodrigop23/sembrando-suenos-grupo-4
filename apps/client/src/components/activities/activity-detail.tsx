@@ -40,7 +40,7 @@ export default function ActivityDetail({
           <div className="relative h-64 md:h-96">
             <Image
               src={activity.image.url}
-              alt={activity.image.alternativeText}
+              alt={activity.title}
               layout="fill"
               objectFit="cover"
               className="rounded-t-lg"
