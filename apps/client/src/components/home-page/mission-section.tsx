@@ -31,7 +31,7 @@ export default function MissionSection({ data }: MissionSectionProps) {
               <div className="px-6 pb-6">
                 <Image
                   src={mission.image.url}
-                  alt={mission.image.alternativeText}
+                  alt={data.title}
                   width={300}
                   height={250}
                   className="rounded-md shadow-md object-cover w-full h-[325px] lg:h-[250px]"

@@ -7,7 +7,6 @@ export const strapiImageSchema = z.object({
   id: z.number(),
   documentId: z.string(),
   url: z.string().transform((url) => `${STRAPI_URL}${url}`),
-  alternativeText: z.string(),
 });
 
 export const linkSchema = z.object({

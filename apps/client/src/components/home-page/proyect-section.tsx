@@ -29,7 +29,7 @@ export default function ProyectSection({ data }: ProyectSectionProps) {
               <CardContent className="flex flex-col gap-2">
                 <Image
                   src={proyect.image.url}
-                  alt={proyect.image.alternativeText}
+                  alt={data.title}
                   width={400}
                   height={300}
                   className="rounded-md shadow-md object-cover w-full h-[425px] lg:h-[400px]"

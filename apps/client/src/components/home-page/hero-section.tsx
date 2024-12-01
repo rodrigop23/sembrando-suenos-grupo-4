@@ -15,7 +15,7 @@ export default function HeroSection({ data }: HeroSectionProps) {
       <div className="container mx-auto px-4 flex flex-col lg:flex-row items-center gap-2">
         <div className="lg:w-1/2 text-center lg:text-left mb-8 lg:mb-0 text-balance">
           <h1 className="text-4xl lg:text-5xl font-bold mb-6">{data.title}</h1>
-          <p className="text-xl mb-8 max-w-2xl mx-auto">{data.subtitle}</p>
+          <p className="text-xl mb-8 max-w-2xl">{data.subtitle}</p>
           <Link
             href={data.ctaButton?.url || "/"}
             className={cn(
@@ -29,11 +29,11 @@ export default function HeroSection({ data }: HeroSectionProps) {
             {data.ctaButton?.text} <ChevronRight className="h-4 w-4" />
           </Link>
         </div>
-        <div className="md:w-3/4 lg:w-1/2 w-full">
+        <div className="sm:w-2/3 md:w-3/4 lg:w-1/2 w-full">
           <div className="h-64 lg:h-auto">
             <Image
               src={data.image.url}
-              alt={data.image.alternativeText}
+              alt={data.title}
               layout="responsive"
               width={800}
               height={533}
