@@ -1,0 +1,68 @@
+{
+  "kind": "collectionType",
+  "collectionName": "events",
+  "info": {
+    "singularName": "event",
+    "pluralName": "events",
+    "displayName": "Event"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "title": {
+      "type": "string",
+      "required": true
+    },
+    "description": {
+      "type": "text",
+      "required": true
+    },
+    "date": {
+      "type": "date",
+      "required": true
+    },
+    "time": {
+      "type": "time",
+      "required": true
+    },
+    "location": {
+      "type": "string",
+      "required": true
+    },
+    "details": {
+      "type": "text",
+      "required": true
+    },
+    "numberOfParticipants": {
+      "type": "integer",
+      "required": true
+    },
+    "organizer": {
+      "type": "string",
+      "required": true
+    },
+    "image": {
+      "allowedTypes": [
+        "images",
+        "files"
+      ],
+      "type": "media",
+      "multiple": false,
+      "required": true
+    },
+    "requirements": {
+      "type": "component",
+      "repeatable": true,
+      "component": "activity.requirements",
+      "required": true
+    },
+    "schedule": {
+      "type": "component",
+      "repeatable": true,
+      "component": "activity.schedule",
+      "required": true
+    }
+  }
+}

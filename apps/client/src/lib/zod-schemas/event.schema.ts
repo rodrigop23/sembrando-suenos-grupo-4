@@ -1,11 +1,12 @@
 import { z } from "zod";
 import { strapiImageSchema, strapiMetaSchema } from "./strapi.schema";
+import { requirementSchema, scheduleSchema } from "./activity.schema";
 
-export const activitySchema = z.object({
+export const eventSchema = z.object({
   id: z.number(),
   documentId: z.string(),
   title: z.string(),
-  descripcion: z.string(),
+  description: z.string(),
   date: z.string().transform((val) => {
     const [year, month, day] = val.split("-");
     return `${day}/${month}/${year}`;
@@ -18,26 +19,15 @@ export const activitySchema = z.object({
   image: strapiImageSchema,
 });
 
-export const requirementSchema = z.object({
-  id: z.number(),
-  description: z.string(),
-});
-
-export const scheduleSchema = z.object({
-  id: z.number(),
-  time: z.string().transform((val) => val.slice(0, 5)),
-  description: z.string(),
-});
-
-export const activityDetailSchema = activitySchema.extend({
+export const eventDetailSchema = eventSchema.extend({
   requirements: z.array(requirementSchema),
   schedule: z.array(scheduleSchema),
 });
 
-export const activitiesSchema = z.object({
-  data: z.array(activitySchema),
+export const eventsSchema = z.object({
+  data: z.array(eventSchema),
   meta: strapiMetaSchema,
 });
 
-export type ActivityType = z.infer<typeof activitySchema>;
-export type ActivityDetailType = z.infer<typeof activityDetailSchema>;
+export type ActivityType = z.infer<typeof eventSchema>;
+export type ActivityDetailType = z.infer<typeof eventDetailSchema>;
