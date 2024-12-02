@@ -39,7 +39,7 @@ export const getEventsDataAction = async (
       status: "published",
     });
 
-    const url = new URL("/api/events", envs.NEXT_PUBLIC_STRAPI_URL);
+    const url = new URL("/api/events", process.env.NEXT_PUBLIC_STRAPI_URL);
 
     url.search = queryString;
 
@@ -110,7 +110,10 @@ export const getEventDetailsAction = async (id: string) => {
       ],
     });
 
-    const url = new URL(`/api/events/${id}`, envs.NEXT_PUBLIC_STRAPI_URL);
+    const url = new URL(
+      `/api/events/${id}`,
+      process.env.NEXT_PUBLIC_STRAPI_URL
+    );
 
     url.search = queryString;
 

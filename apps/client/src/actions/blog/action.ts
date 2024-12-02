@@ -36,7 +36,7 @@ export const getBlogsDataAction = async (
       status: "published",
     });
 
-    const url = new URL("/api/blogs", envs.NEXT_PUBLIC_STRAPI_URL);
+    const url = new URL("/api/blogs", process.env.NEXT_PUBLIC_STRAPI_URL);
 
     url.search = queryString;
 
@@ -103,7 +103,7 @@ export const getBlogDetailsAction = async (id: string) => {
       ],
     });
 
-    const url = new URL(`/api/blogs/${id}`, envs.NEXT_PUBLIC_STRAPI_URL);
+    const url = new URL(`/api/blogs/${id}`, process.env.NEXT_PUBLIC_STRAPI_URL);
 
     url.search = queryString;
 

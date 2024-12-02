@@ -39,7 +39,7 @@ export const getActivitiesDataAction = async (
       status: "published",
     });
 
-    const url = new URL("/api/activities", envs.NEXT_PUBLIC_STRAPI_URL);
+    const url = new URL("/api/activities", process.env.NEXT_PUBLIC_STRAPI_URL);
 
     url.search = queryString;
 
@@ -110,7 +110,10 @@ export const getActivityDetailsAction = async (id: string) => {
       ],
     });
 
-    const url = new URL(`/api/activities/${id}`, envs.NEXT_PUBLIC_STRAPI_URL);
+    const url = new URL(
+      `/api/activities/${id}`,
+      process.env.NEXT_PUBLIC_STRAPI_URL
+    );
 
     url.search = queryString;
 

@@ -15,7 +15,7 @@ export const registerUserAction = async (
   try {
     const url = new URL(
       "/api/auth/local/register",
-      envs.NEXT_PUBLIC_STRAPI_URL
+      process.env.NEXT_PUBLIC_STRAPI_URL
     );
 
     const newData = {
@@ -62,7 +62,7 @@ export const loginUserAction = async (
   userData: LoginUserType
 ): Promise<IGenericResponse> => {
   try {
-    const url = new URL("/api/auth/local", envs.NEXT_PUBLIC_STRAPI_URL);
+    const url = new URL("/api/auth/local", process.env.NEXT_PUBLIC_STRAPI_URL);
 
     const newData = {
       identifier: userData.email,
@@ -104,7 +104,7 @@ export const loginUserAction = async (
 
 export const getCurrentUser = cache(async (): Promise<IUser | null> => {
   try {
-    const url = new URL("/api/users/me", envs.NEXT_PUBLIC_STRAPI_URL);
+    const url = new URL("/api/users/me", process.env.NEXT_PUBLIC_STRAPI_URL);
 
     url.search = qs.stringify({
       fields: ["email", "username"],

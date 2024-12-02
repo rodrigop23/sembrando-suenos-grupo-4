@@ -62,7 +62,7 @@ export const getHomeDataAction = async () => {
       fields: ["id", "documentId"],
     });
 
-    const url = new URL("/api/home-page", envs.NEXT_PUBLIC_STRAPI_URL);
+    const url = new URL("/api/home-page", process.env.NEXT_PUBLIC_STRAPI_URL);
 
     url.search = queryString;
 

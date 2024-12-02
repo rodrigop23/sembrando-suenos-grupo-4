@@ -23,7 +23,7 @@ export const getTeamDataAction = async () => {
       fields: ["title", "description"],
     });
 
-    const url = new URL("/api/team", envs.NEXT_PUBLIC_STRAPI_URL);
+    const url = new URL("/api/team", process.env.NEXT_PUBLIC_STRAPI_URL);
 
     url.search = queryString;
 
