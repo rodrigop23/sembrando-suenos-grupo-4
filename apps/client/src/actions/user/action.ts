@@ -101,7 +101,12 @@ export const loginUserAction = async (
 export const getCurrentUser = cache(async (): Promise<IUser | null> => {
   try {
     const queryString = qs.stringify({
-      fields: ["email", "username"],
+      populate: {
+        role: {
+          fields: ["name"],
+        },
+      },
+      fields: ["username", "email"],
     });
 
     const URL = `${process.env.NEXT_PUBLIC_STRAPI_URL}/api/users/me?${queryString}`;
