@@ -17,6 +17,7 @@ import { ActivityDetailType } from "@/lib/zod-schemas/activity.schema";
 import { SocialShareDialog } from "../social-share-dialog";
 import { cn } from "@/lib/utils";
 import Link from "next/link";
+import { Progress } from "../ui/progress";
 
 interface ActivityDetailsProps {
   data: ActivityDetailType;
@@ -124,6 +125,17 @@ export default function ActivityDetail({
                   </p>
                 </div>
               </div>
+              <Progress
+                value={
+                  (activity.users.length / activity.numberOfParticipants) * 100
+                }
+                className="mb-2"
+              />
+              <p className="text-sm text-muted-foreground mb-4">
+                {activity.users.length} de {activity.numberOfParticipants}{" "}
+                participantes
+              </p>
+
               <Button className="w-full mb-4">Participar</Button>
               <div className="flex justify-between">
                 <Button variant="outline" size="icon">

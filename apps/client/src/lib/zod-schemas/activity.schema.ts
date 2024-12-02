@@ -32,6 +32,7 @@ export const scheduleSchema = z.object({
 export const activityDetailSchema = activitySchema.extend({
   requirements: z.array(requirementSchema),
   schedule: z.array(scheduleSchema),
+  users: z.array(z.any()),
 });
 
 export const activitiesSchema = z.object({

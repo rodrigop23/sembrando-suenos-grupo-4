@@ -105,6 +105,9 @@ export const getCurrentUser = cache(async (): Promise<IUser | null> => {
         role: {
           fields: ["name"],
         },
+        activities: {
+          fields: ["documentId", "title"],
+        },
       },
       fields: ["username", "email"],
     });
@@ -131,7 +134,7 @@ export const getCurrentUser = cache(async (): Promise<IUser | null> => {
       return null;
     }
 
-    console.log(data);
+    // console.log(data);
 
     return data;
   } catch (error) {

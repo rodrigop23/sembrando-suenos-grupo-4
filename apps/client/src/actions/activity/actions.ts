@@ -94,6 +94,9 @@ export const getActivityDetailsAction = async (id: string) => {
         schedule: {
           populate: true,
         },
+        users: {
+          populate: true,
+        },
       },
       fields: [
         "title",
