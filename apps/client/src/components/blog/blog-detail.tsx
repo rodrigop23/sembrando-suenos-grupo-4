@@ -90,6 +90,20 @@ export default function BlogDetail({ data: blog }: Props) {
                 }
               },
 
+              list: ({ children, format }) => {
+                const List = format === "ordered" ? "ol" : "ul";
+                return (
+                  <List
+                    className={
+                      format === "ordered"
+                        ? "list-decimal list-inside space-y-2"
+                        : "list-disc list-inside space-y-2"
+                    }
+                  >
+                    {children}
+                  </List>
+                );
+              },
               // For links, you may want to use the component from your router or framework
               link: ({ children, url }) => <Link href={url}>{children}</Link>,
             }}
