@@ -53,7 +53,7 @@ export default function Blog({ data }: Props) {
       </CardFooter>
       <CardFooter>
         <Button asChild className="w-full">
-          <Link href={`/data/${data.id}`}>Leer más</Link>
+          <Link href={`/blog/${data.documentId}`}>Leer más</Link>
         </Button>
       </CardFooter>
     </Card>

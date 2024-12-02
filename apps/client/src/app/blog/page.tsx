@@ -3,7 +3,7 @@ import Blog from "@/components/blog/blog";
 import CustomPagination from "@/components/custom-pagination";
 import SearchInput from "@/components/search-input";
 
-export default async function BlogPage({
+export default async function BlogsPage({
   searchParams,
 }: Readonly<{
   searchParams: { q: string; page: string };
