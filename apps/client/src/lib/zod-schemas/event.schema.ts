@@ -22,6 +22,7 @@ export const eventSchema = z.object({
 export const eventDetailSchema = eventSchema.extend({
   requirements: z.array(requirementSchema),
   schedule: z.array(scheduleSchema),
+  users: z.array(z.any()),
 });
 
 export const eventsSchema = z.object({

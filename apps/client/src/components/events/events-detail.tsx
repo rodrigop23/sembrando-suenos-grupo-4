@@ -1,3 +1,5 @@
+"use client";
+
 import { EventDetailType } from "@/lib/zod-schemas/event.schema";
 import Link from "next/link";
 import { Button, buttonVariants } from "../ui/button";
@@ -16,12 +18,47 @@ import { Card, CardContent } from "../ui/card";
 import { Avatar, AvatarFallback, AvatarImage } from "../ui/avatar";
 import { Progress } from "../ui/progress";
 import { SocialShareDialog } from "../social-share-dialog";
+import { useRouter } from "next/navigation";
+import { useToast } from "@/hooks/use-toast";
+import {
+  registerEventAction,
+  unregisterEventAction,
+} from "@/actions/event/action";
 
 interface EventDetailsProps {
   data: EventDetailType;
+  token: string;
+  isParticipating: boolean;
 }
 
-export default function EventDetail({ data }: Readonly<EventDetailsProps>) {
+export default function EventDetail({
+  data,
+  token,
+  isParticipating = false,
+}: Readonly<EventDetailsProps>) {
+  const router = useRouter();
+  const { toast } = useToast();
+
+  const handleParticipate = async () => {
+    if (isParticipating) {
+      await unregisterEventAction(data.documentId, token);
+
+      toast({
+        description: "Ya no estás participando en este evento",
+      });
+
+      return router.refresh();
+    }
+
+    await registerEventAction(data.documentId, token);
+
+    toast({
+      description: "¡Te has registrado exitosamente!",
+    });
+
+    return router.refresh();
+  };
+
   return (
     <div className="container mx-auto px-4 py-8 max-w-5xl">
       <Link
@@ -127,14 +164,16 @@ export default function EventDetail({ data }: Readonly<EventDetailsProps>) {
                 </div>
               </div>
               <Progress
-                value={(10 / data.numberOfParticipants) * 100}
+                value={(data.users.length / data.numberOfParticipants) * 100}
                 className="mb-2"
               />
               <p className="text-sm text-muted-foreground mb-4">
-                10 de {data.numberOfParticipants} participantes
+                {data.users.length} de {data.numberOfParticipants} participantes
               </p>
-              <Button className="w-full mb-4">
-                Registrarse para el evento
+              <Button className="w-full mb-4" onClick={handleParticipate}>
+                {isParticipating
+                  ? "¡Estás Registrado!"
+                  : "Registrarse para el evento"}
               </Button>
               <div className="flex justify-between items-center">
                 <span className="text-sm text-muted-foreground">
