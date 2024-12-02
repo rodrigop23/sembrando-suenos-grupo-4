@@ -11,6 +11,7 @@ const nextConfig = {
       {
         protocol: "https",
         hostname: "harmonious-duck-41878a5889.strapiapp.com",
+        port: "443",
         pathname: "/uploads/**/*",
       },
     ],
