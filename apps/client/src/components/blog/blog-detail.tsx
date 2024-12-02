@@ -68,7 +68,7 @@ export default function BlogDetail({ data: blog }: Props) {
           />
         </div>
 
-        <div className="prose max-w-none">
+        <div className="prose prose-gray max-w-none">
           <BlocksRenderer
             content={blog.content}
             blocks={{
