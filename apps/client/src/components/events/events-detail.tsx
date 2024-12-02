@@ -21,7 +21,7 @@ interface EventDetailsProps {
   data: EventDetailType;
 }
 
-export default function EventDetail({ data }: EventDetailsProps) {
+export default function EventDetail({ data }: Readonly<EventDetailsProps>) {
   return (
     <div className="container mx-auto px-4 py-8 max-w-5xl">
       <Link

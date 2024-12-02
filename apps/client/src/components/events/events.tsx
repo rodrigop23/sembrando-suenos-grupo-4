@@ -17,7 +17,7 @@ interface EventsProps {
   event: EventType;
 }
 
-export default function Events({ event }: EventsProps) {
+export default function Events({ event }: Readonly<EventsProps>) {
   const router = useRouter();
 
   return (

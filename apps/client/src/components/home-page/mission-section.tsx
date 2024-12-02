@@ -8,7 +8,9 @@ interface MissionSectionProps {
   data: MissionSectionType;
 }
 
-export default function MissionSection({ data }: MissionSectionProps) {
+export default function MissionSection({
+  data,
+}: Readonly<MissionSectionProps>) {
   return (
     <section id="about" className="py-16">
       <div className="container mx-auto px-4 text-pretty">

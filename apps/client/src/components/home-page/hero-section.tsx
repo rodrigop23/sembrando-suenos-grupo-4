@@ -9,7 +9,7 @@ interface HeroSectionProps {
   data: HeroSectionType;
 }
 
-export default function HeroSection({ data }: HeroSectionProps) {
+export default function HeroSection({ data }: Readonly<HeroSectionProps>) {
   return (
     <section className="bg-gradient-to-r from-primary to-primary-foreground text-white py-20">
       <div className="container mx-auto px-4 flex flex-col lg:flex-row items-center gap-2">

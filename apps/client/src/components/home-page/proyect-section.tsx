@@ -12,7 +12,9 @@ interface ProyectSectionProps {
   data: ProyectSectionType;
 }
 
-export default function ProyectSection({ data }: ProyectSectionProps) {
+export default function ProyectSection({
+  data,
+}: Readonly<ProyectSectionProps>) {
   return (
     <section id="projects" className="bg-gray-100 py-16">
       <div className="container mx-auto px-4 text-pretty">

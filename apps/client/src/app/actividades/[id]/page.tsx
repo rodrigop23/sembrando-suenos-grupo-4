@@ -5,9 +5,9 @@ import { redirect } from "next/navigation";
 
 export default async function ActivityPage({
   params,
-}: {
+}: Readonly<{
   params: Promise<{ id: string }>;
-}) {
+}>) {
   const { id } = await params;
 
   const result = await getActivityDetailsAction(id);

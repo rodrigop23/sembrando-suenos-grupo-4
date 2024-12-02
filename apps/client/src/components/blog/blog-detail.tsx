@@ -16,9 +16,7 @@ interface Props {
   data: BlogDetailType;
 }
 
-export default function BlogDetail({ data: blog }: Props) {
-  console.log(blog.content);
-
+export default function BlogDetail({ data: blog }: Readonly<Props>) {
   return (
     <div className="container mx-auto px-4 py-12 max-w-4xl">
       <Link

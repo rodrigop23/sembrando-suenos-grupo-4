@@ -16,7 +16,7 @@ interface Props {
   data: BlogType;
 }
 
-export default function Blog({ data }: Props) {
+export default function Blog({ data }: Readonly<Props>) {
   return (
     <Card key={data.id} className="flex flex-col">
       <div className="relative h-48 w-full">

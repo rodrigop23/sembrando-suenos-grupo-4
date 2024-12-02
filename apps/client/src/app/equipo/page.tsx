@@ -20,8 +20,11 @@ export default async function TeamPage() {
       </p>
 
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-        {data.teamMember.map((member, index) => (
-          <Card key={index} className="overflow-hidden flex flex-col">
+        {data.teamMember.map((member) => (
+          <Card
+            key={member.description}
+            className="overflow-hidden flex flex-col"
+          >
             <div className="relative h-64 w-full">
               <Image
                 src={member.image.url}

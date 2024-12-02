@@ -17,7 +17,7 @@ interface ActivitesProps {
   activity: ActivityType;
 }
 
-export default function Activities({ activity }: ActivitesProps) {
+export default function Activities({ activity }: Readonly<ActivitesProps>) {
   const router = useRouter();
 
   return (
