@@ -22,11 +22,9 @@ export const getTeamDataAction = async () => {
       fields: ["title", "description"],
     });
 
-    const url = new URL("/api/team", process.env.NEXT_PUBLIC_STRAPI_URL);
+    const URL = `${process.env.NEXT_PUBLIC_STRAPI_URL}/api/team?${queryString}`;
 
-    url.search = queryString;
-
-    const response = await fetch(url.toString(), {
+    const response = await fetch(URL, {
       method: "GET",
       headers: {
         "Content-Type": "application/json",

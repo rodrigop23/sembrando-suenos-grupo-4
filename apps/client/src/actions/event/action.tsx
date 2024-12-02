@@ -38,11 +38,9 @@ export const getEventsDataAction = async (
       status: "published",
     });
 
-    const url = new URL("/api/events", process.env.NEXT_PUBLIC_STRAPI_URL);
+    const URL = `${process.env.NEXT_PUBLIC_STRAPI_URL}/api/events?${queryString}`;
 
-    url.search = queryString;
-
-    const response = await fetch(url.toString(), {
+    const response = await fetch(URL, {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
@@ -109,14 +107,9 @@ export const getEventDetailsAction = async (id: string) => {
       ],
     });
 
-    const url = new URL(
-      `/api/events/${id}`,
-      process.env.NEXT_PUBLIC_STRAPI_URL
-    );
+    const URL = `${process.env.NEXT_PUBLIC_STRAPI_URL}/api/events/${id}?${queryString}`;
 
-    url.search = queryString;
-
-    const response = await fetch(url.toString(), {
+    const response = await fetch(URL, {
       method: "GET",
       headers: {
         "Content-Type": "application/json",

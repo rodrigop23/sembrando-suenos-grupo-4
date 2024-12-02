@@ -35,11 +35,9 @@ export const getBlogsDataAction = async (
       status: "published",
     });
 
-    const url = new URL("/api/blogs", process.env.NEXT_PUBLIC_STRAPI_URL);
+    const URL = `${process.env.NEXT_PUBLIC_STRAPI_URL}/api/blogs?${queryString}`;
 
-    url.search = queryString;
-
-    const response = await fetch(url.toString(), {
+    const response = await fetch(URL, {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
@@ -102,11 +100,9 @@ export const getBlogDetailsAction = async (id: string) => {
       ],
     });
 
-    const url = new URL(`/api/blogs/${id}`, process.env.NEXT_PUBLIC_STRAPI_URL);
+    const URL = `${process.env.NEXT_PUBLIC_STRAPI_URL}/api/blogs/${id}?${queryString}`;
 
-    url.search = queryString;
-
-    const response = await fetch(url.toString(), {
+    const response = await fetch(URL, {
       method: "GET",
       headers: {
         "Content-Type": "application/json",

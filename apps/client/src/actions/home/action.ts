@@ -61,11 +61,9 @@ export const getHomeDataAction = async () => {
       fields: ["id", "documentId"],
     });
 
-    const url = new URL("/api/home-page", process.env.NEXT_PUBLIC_STRAPI_URL);
+    const URL = `${process.env.NEXT_PUBLIC_STRAPI_URL}/api/home-page?${queryString}`;
 
-    url.search = queryString;
-
-    const response = await fetch(url.toString(), {
+    const response = await fetch(URL, {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
@@ -88,8 +86,6 @@ export const getHomeDataAction = async () => {
     }
 
     const validateSchema = await homePageSchema.safeParseAsync(data.data);
-
-    // console.log(validateSchema.error);
 
     if (!validateSchema.success) {
       return {

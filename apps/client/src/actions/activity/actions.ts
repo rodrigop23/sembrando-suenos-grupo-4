@@ -38,11 +38,9 @@ export const getActivitiesDataAction = async (
       status: "published",
     });
 
-    const url = new URL("/api/activities", process.env.NEXT_PUBLIC_STRAPI_URL);
+    const URL = `${process.env.NEXT_PUBLIC_STRAPI_URL}/api/activities?${queryString}`;
 
-    url.search = queryString;
-
-    const response = await fetch(url.toString(), {
+    const response = await fetch(URL, {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
@@ -109,14 +107,9 @@ export const getActivityDetailsAction = async (id: string) => {
       ],
     });
 
-    const url = new URL(
-      `/api/activities/${id}`,
-      process.env.NEXT_PUBLIC_STRAPI_URL
-    );
+    const URL = `${process.env.NEXT_PUBLIC_STRAPI_URL}/api/activities/${id}?${queryString}`;
 
-    url.search = queryString;
-
-    const response = await fetch(url.toString(), {
+    const response = await fetch(URL, {
       method: "GET",
       headers: {
         "Content-Type": "application/json",

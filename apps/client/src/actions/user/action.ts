@@ -12,10 +12,7 @@ export const registerUserAction = async (
   userData: RegisterUserType
 ): Promise<IGenericResponse> => {
   try {
-    const url = new URL(
-      "/api/auth/local/register",
-      process.env.NEXT_PUBLIC_STRAPI_URL
-    );
+    const URL = `${process.env.NEXT_PUBLIC_STRAPI_URL}/api/auth/local/register`;
 
     const newData = {
       username: userData.username,
@@ -23,7 +20,7 @@ export const registerUserAction = async (
       password: userData.password,
     };
 
-    const response = await fetch(url.toString(), {
+    const response = await fetch(URL, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -61,14 +58,14 @@ export const loginUserAction = async (
   userData: LoginUserType
 ): Promise<IGenericResponse> => {
   try {
-    const url = new URL("/api/auth/local", process.env.NEXT_PUBLIC_STRAPI_URL);
+    const URL = `${process.env.NEXT_PUBLIC_STRAPI_URL}/api/auth/local`;
 
     const newData = {
       identifier: userData.email,
       password: userData.password,
     };
 
-    const response = await fetch(url.toString(), {
+    const response = await fetch(URL, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -103,15 +100,15 @@ export const loginUserAction = async (
 
 export const getCurrentUser = cache(async (): Promise<IUser | null> => {
   try {
-    const url = new URL("/api/users/me", process.env.NEXT_PUBLIC_STRAPI_URL);
-
-    url.search = qs.stringify({
+    const queryString = qs.stringify({
       fields: ["email", "username"],
     });
 
+    const URL = `${process.env.NEXT_PUBLIC_STRAPI_URL}/api/users/me?${queryString}`;
+
     const token = getToken();
 
-    const response = await fetch(url.toString(), {
+    const response = await fetch(URL, {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
