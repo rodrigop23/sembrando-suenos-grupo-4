@@ -12,11 +12,9 @@ export default async function EventPage({
 
   const result = await getEventDetailsAction(id);
 
-  console.log(result);
-
-  // if (!result.ok) {
-  // redirect("/eventos");
-  // }
+  if (!result.ok) {
+    redirect("/eventos");
+  }
 
   return <EventDetail data={result.data as EventDetailType} />;
 }
