@@ -76,6 +76,12 @@
       "relation": "manyToMany",
       "target": "api::event.event",
       "inversedBy": "users"
+    },
+    "name": {
+      "type": "string"
+    },
+    "lastName": {
+      "type": "string"
     }
   }
 }

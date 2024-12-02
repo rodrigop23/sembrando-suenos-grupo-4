@@ -1028,12 +1028,14 @@ export interface PluginUsersPermissionsUser
         minLength: 6;
       }>;
     events: Schema.Attribute.Relation<'manyToMany', 'api::event.event'>;
+    lastName: Schema.Attribute.String;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<
       'oneToMany',
       'plugin::users-permissions.user'
     > &
       Schema.Attribute.Private;
+    name: Schema.Attribute.String;
     password: Schema.Attribute.Password &
       Schema.Attribute.Private &
       Schema.Attribute.SetMinMaxLength<{

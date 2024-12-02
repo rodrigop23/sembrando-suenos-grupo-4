@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { LogOut, Menu, Settings, User } from "lucide-react";
+import { LogOut, Menu, UserIcon } from "lucide-react";
 
 import Link from "next/link";
 import Image from "next/image";
@@ -99,13 +99,10 @@ export default function NavbarMain({ userData }: Readonly<NavbarListProps>) {
                 <NavbarItems />
                 <Separator className="my-4" />
                 <Button variant="ghost" className="justify-start px-2">
-                  <User className="mr-2 h-4 w-4" />
+                  <UserIcon className="mr-2 h-4 w-4" />
                   <span>Perfil</span>
                 </Button>
-                <Button variant="ghost" className="justify-start px-2">
-                  <Settings className="mr-2 h-4 w-4" />
-                  <span>Configuración</span>
-                </Button>
+
                 <Button variant="ghost" className="justify-start px-2">
                   <LogOut className="mr-2 h-4 w-4" />
                   <span>Cerrar sesión</span>

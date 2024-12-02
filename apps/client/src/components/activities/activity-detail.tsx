@@ -3,15 +3,7 @@
 import Image from "next/image";
 import { Button, buttonVariants } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import {
-  Calendar,
-  Clock,
-  MapPin,
-  Users,
-  ArrowLeft,
-  Heart,
-  CreditCard,
-} from "lucide-react";
+import { Calendar, Clock, MapPin, Users, ArrowLeft } from "lucide-react";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { ActivityDetailType } from "@/lib/zod-schemas/activity.schema";
 import { SocialShareDialog } from "../social-share-dialog";
@@ -172,14 +164,11 @@ export default function ActivityDetail({
               <Button className="w-full mb-4" onClick={handleParticipate}>
                 {isParticipating ? "¡Estás Participando!" : "Participar"}
               </Button>
-              <div className="flex justify-between">
-                <Button variant="outline" size="icon">
-                  <Heart className="h-4 w-4" />
-                </Button>
+              <div className="flex justify-between items-center">
+                <span className="text-sm text-muted-foreground">
+                  Comparte esta actividad
+                </span>
                 <SocialShareDialog />
-                <Button variant="outline" size="icon">
-                  <CreditCard className="h-4 w-4" />
-                </Button>
               </div>
             </CardContent>
           </Card>

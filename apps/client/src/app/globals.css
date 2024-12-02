@@ -73,3 +73,30 @@
     @apply bg-background text-foreground;
   }
 }
+
+/* Ocultar ícono para revelar contraseña de Edge */
+input::-ms-reveal,
+input::-ms-clear {
+  display: none;
+}
+
+/* width */
+::-webkit-scrollbar {
+  width: 0.5rem;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #e4e4e7;
+  border-radius: 0.625rem;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #e4e4e7;
+}
