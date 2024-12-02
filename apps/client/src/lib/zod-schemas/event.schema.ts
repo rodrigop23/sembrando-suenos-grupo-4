@@ -29,5 +29,5 @@ export const eventsSchema = z.object({
   meta: strapiMetaSchema,
 });
 
-export type ActivityType = z.infer<typeof eventSchema>;
-export type ActivityDetailType = z.infer<typeof eventDetailSchema>;
+export type EventType = z.infer<typeof eventSchema>;
+export type EventDetailType = z.infer<typeof eventDetailSchema>;
