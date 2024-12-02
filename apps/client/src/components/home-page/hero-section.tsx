@@ -34,11 +34,10 @@ export default function HeroSection({ data }: HeroSectionProps) {
             <Image
               src={data.image.url}
               alt={data.title}
-              layout="responsive"
               width={800}
               height={533}
-              objectFit="cover"
               className="rounded-lg shadow-lg"
+              style={{ objectFit: "cover" }}
             />
           </div>
         </div>
