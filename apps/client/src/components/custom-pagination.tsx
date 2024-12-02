@@ -10,7 +10,7 @@ import {
   PaginationNext,
   PaginationPrevious,
 } from "./ui/pagination";
-import { ReactNode, useCallback, useEffect, useState } from "react";
+import { ReactNode, useCallback, useState } from "react";
 
 interface PaginationLinkProps {
   pageCount: number;
@@ -23,14 +23,17 @@ export default function CustomPagination({ pageCount }: PaginationLinkProps) {
 
   const [currentPage, setCurrentPage] = useState(1);
 
-  const handlePageChange = useCallback((page: number) => {
-    const params = new URLSearchParams(searchParams);
+  const handlePageChange = useCallback(
+    (page: number) => {
+      const params = new URLSearchParams(searchParams);
 
-    params.set("page", page.toString());
+      params.set("page", page.toString());
 
-    replace(`${pathname}?${params.toString()}`);
-    setCurrentPage(page);
-  }, []);
+      replace(`${pathname}?${params.toString()}`);
+      setCurrentPage(page);
+    },
+    [pathname, replace, searchParams]
+  );
 
   const renderPageNumbers = () => {
     const items: ReactNode[] = [];
