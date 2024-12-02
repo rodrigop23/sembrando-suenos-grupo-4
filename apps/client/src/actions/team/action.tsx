@@ -1,6 +1,5 @@
 "use server";
 
-import envs from "@/config/envs";
 import { teamMemberPageSchema } from "@/lib/zod-schemas/team.schema";
 import qs from "qs";
 

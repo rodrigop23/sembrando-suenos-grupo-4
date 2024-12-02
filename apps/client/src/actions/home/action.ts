@@ -1,4 +1,3 @@
-import envs from "@/config/envs";
 import { homePageSchema } from "@/lib/zod-schemas/home.schema";
 import qs from "qs";
 

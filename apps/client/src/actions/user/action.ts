@@ -1,6 +1,5 @@
 "use server";
 
-import envs from "@/config/envs";
 import { LoginUserType, RegisterUserType } from "@/lib/zod-schemas/user-schema";
 import { deleteTokenCookie, getToken, setTokenCookie } from "@/utils/session";
 import { IGenericResponse } from "@/interface/generic.interface";

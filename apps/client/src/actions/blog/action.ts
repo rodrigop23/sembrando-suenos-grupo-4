@@ -1,4 +1,3 @@
-import envs from "@/config/envs";
 import { blogDetailSchema, blogsSchema } from "@/lib/zod-schemas/blog.schema";
 import qs from "qs";
 

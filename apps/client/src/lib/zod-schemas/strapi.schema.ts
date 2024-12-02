@@ -1,4 +1,3 @@
-import envs from "@/config/envs";
 import { z } from "zod";
 
 const STRAPI_URL = process.env.NEXT_PUBLIC_STRAPI_URL;
