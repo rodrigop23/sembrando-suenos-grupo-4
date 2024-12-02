@@ -18,14 +18,47 @@ import { SocialShareDialog } from "../social-share-dialog";
 import { cn } from "@/lib/utils";
 import Link from "next/link";
 import { Progress } from "../ui/progress";
+import {
+  registerActivityAction,
+  unregisterActivityAction,
+} from "@/actions/activity/actions";
+import { useRouter } from "next/navigation";
+import { useToast } from "@/hooks/use-toast";
 
 interface ActivityDetailsProps {
   data: ActivityDetailType;
+  token: string;
+  isParticipating: boolean;
 }
 
 export default function ActivityDetail({
   data: activity,
+  token,
+  isParticipating = false,
 }: Readonly<ActivityDetailsProps>) {
+  const router = useRouter();
+  const { toast } = useToast();
+
+  const handleParticipate = async () => {
+    if (isParticipating) {
+      await unregisterActivityAction(activity.documentId, token);
+
+      toast({
+        description: "Ya no estás participando en esta actividad",
+      });
+
+      return router.refresh();
+    }
+
+    await registerActivityAction(activity.documentId, token);
+
+    toast({
+      description: "¡Te has registrado exitosamente!",
+    });
+
+    return router.refresh();
+  };
+
   return (
     <div className="container mx-auto px-4 py-8 max-w-4xl">
       <Link
@@ -136,7 +169,9 @@ export default function ActivityDetail({
                 participantes
               </p>
 
-              <Button className="w-full mb-4">Participar</Button>
+              <Button className="w-full mb-4" onClick={handleParticipate}>
+                {isParticipating ? "¡Estás Participando!" : "Participar"}
+              </Button>
               <div className="flex justify-between">
                 <Button variant="outline" size="icon">
                   <Heart className="h-4 w-4" />

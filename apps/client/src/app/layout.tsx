@@ -5,6 +5,7 @@ import NavBarWrapper from "@/components/global/navbar/navbar-wrapper";
 import Footer from "@/components/global/footer";
 import { Suspense } from "react";
 import GlobalLoading from "@/components/global/global-loading";
+import { Toaster } from "@/components/ui/toaster";
 
 const roboto = Roboto({
   subsets: ["latin"],
@@ -32,6 +33,8 @@ export default function RootLayout({
           <Suspense fallback={<GlobalLoading />}>{children}</Suspense>
         </main>
         <Footer />
+
+        <Toaster />
       </body>
     </html>
   );
