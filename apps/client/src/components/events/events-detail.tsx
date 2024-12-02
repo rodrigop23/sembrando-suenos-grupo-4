@@ -152,17 +152,28 @@ export default function EventDetail({ data }: EventDetailsProps) {
               </h3>
               <div className="relative w-full h-48 mb-2">
                 <Image
-                  src="/placeholder.svg?height=200&width=300"
+                  src="/google-maps.png"
                   alt="Mapa de ubicación del evento"
                   fill
+                  sizes="100%"
                   style={{ objectFit: "cover" }}
                   className="rounded-md"
                 />
               </div>
               <p className="text-sm text-muted-foreground">{data.location}</p>
-              <Button variant="outline" className="w-full mt-4">
+
+              <Link
+                href={`https://www.google.com/maps/search/?api=1&query=${data.location}`}
+                className={cn(
+                  buttonVariants({
+                    variant: "outline",
+                  }),
+                  "w-full mt-4"
+                )}
+                target="_blank"
+              >
                 Ver en Google Maps
-              </Button>
+              </Link>
             </CardContent>
           </Card>
         </div>
