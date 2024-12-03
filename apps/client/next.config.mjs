@@ -10,9 +10,9 @@ const nextConfig = {
       },
       {
         protocol: "https",
-        hostname: "harmonious-duck-41878a5889.strapiapp.com",
-        port: "443",
-        pathname: "/uploads/**/*",
+        hostname: "appetizing-cows-c4e47800f3.media.strapiapp.com",
+        port: "",
+        pathname: "/**",
       },
     ],
   },
