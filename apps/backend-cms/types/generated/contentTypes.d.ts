@@ -1016,6 +1016,7 @@ export interface PluginUsersPermissionsUser
       'manyToMany',
       'api::activity.activity'
     >;
+    bio: Schema.Attribute.Text;
     blocked: Schema.Attribute.Boolean & Schema.Attribute.DefaultTo<false>;
     confirmationToken: Schema.Attribute.String & Schema.Attribute.Private;
     confirmed: Schema.Attribute.Boolean & Schema.Attribute.DefaultTo<false>;

@@ -77,8 +77,6 @@ export const getHomeDataAction = async () => {
     }
 
     if (data.error) {
-      console.log(data);
-
       return {
         ok: false,
         message: data?.error?.message,

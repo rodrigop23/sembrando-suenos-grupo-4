@@ -178,8 +178,6 @@ export const registerActivityAction = async (id: string, token: string) => {
 
     const data = await response.json();
 
-    console.log(data);
-
     if (!data) {
       throw new Error("Error en el servidor. Intente de nuevo.");
     }

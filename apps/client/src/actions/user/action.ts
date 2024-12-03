@@ -1,6 +1,10 @@
 "use server";
 
-import { LoginUserType, RegisterUserType } from "@/lib/zod-schemas/user-schema";
+import {
+  LoginUserType,
+  RegisterUserType,
+  UserType,
+} from "@/lib/zod-schemas/user-schema";
 import { deleteTokenCookie, getToken, setTokenCookie } from "@/utils/session";
 import { IGenericResponse } from "@/interface/generic.interface";
 import qs from "qs";
@@ -109,7 +113,7 @@ export const getCurrentUser = cache(async (): Promise<IUser | null> => {
           fields: ["documentId", "title"],
         },
       },
-      fields: ["username", "email"],
+      fields: ["username", "email", "bio", "name", "lastName"],
     });
 
     const URL = `${process.env.NEXT_PUBLIC_STRAPI_URL}/api/users/me?${queryString}`;
@@ -134,8 +138,6 @@ export const getCurrentUser = cache(async (): Promise<IUser | null> => {
       return null;
     }
 
-    // console.log(data);
-
     return data;
   } catch (error) {
     console.log(error);
@@ -147,4 +149,45 @@ export const logoutUserAction = async () => {
   deleteTokenCookie();
 
   redirect("/sign-in");
+};
+
+export const updateUserAction = async (
+  userData: UserType,
+  id: string
+): Promise<IGenericResponse> => {
+  try {
+    const URL = `${process.env.NEXT_PUBLIC_STRAPI_URL}/api/users/${id}`;
+
+    const token = getToken();
+
+    const response = await fetch(URL, {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
+      },
+      body: JSON.stringify({ ...userData }),
+    });
+
+    const data = await response.json();
+
+    if (!data) {
+      throw new Error("Error en el servidor. Intente de nuevo.");
+    }
+
+    if (data.error) {
+      return {
+        ok: false,
+        message: data?.error?.message,
+      };
+    }
+
+    return {
+      ok: true,
+      message: "Perfil actualizado",
+    };
+  } catch (error) {
+    console.log(error);
+    throw new Error("Algo salió mal. Intente de nuevo.");
+  }
 };

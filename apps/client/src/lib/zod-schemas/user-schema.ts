@@ -65,5 +65,18 @@ export const loginUserSchema = z.object({
     }),
 });
 
+export const userSchema = z.object({
+  username: z.string().min(3, {
+    message: "El nombre de usuario es requerido",
+  }),
+  email: z.string().email({
+    message: "Ingresa un correo electrónico válido",
+  }),
+  name: z.string().optional(),
+  lastName: z.string().optional(),
+  bio: z.string().optional(),
+});
+
 export type LoginUserType = z.infer<typeof loginUserSchema>;
 export type RegisterUserType = z.infer<typeof registerUserSchema>;
+export type UserType = z.infer<typeof userSchema>;

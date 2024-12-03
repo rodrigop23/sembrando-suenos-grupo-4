@@ -7,7 +7,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 
-import { Button } from "@/components/ui/button";
+import { Button, buttonVariants } from "@/components/ui/button";
 import {
   Sheet,
   SheetContent,
@@ -22,6 +22,7 @@ import { UserNav } from "./user-nav";
 import NavbarItems from "./navbar-items";
 import logo from "@/assets/logo.png";
 import { IUser } from "@/interface/user.interface";
+import { cn } from "@/lib/utils";
 
 interface NavbarListProps {
   userData: IUser | null;
@@ -98,10 +99,16 @@ export default function NavbarMain({ userData }: Readonly<NavbarListProps>) {
                 </div>
                 <NavbarItems />
                 <Separator className="my-4" />
-                <Button variant="ghost" className="justify-start px-2">
+                <Link
+                  href="/perfil"
+                  className={cn(
+                    buttonVariants({ variant: "ghost" }),
+                    "justify-start px-2"
+                  )}
+                >
                   <UserIcon className="mr-2 h-4 w-4" />
                   <span>Perfil</span>
-                </Button>
+                </Link>
 
                 <Button variant="ghost" className="justify-start px-2">
                   <LogOut className="mr-2 h-4 w-4" />
