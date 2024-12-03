@@ -24,22 +24,29 @@ import {
   registerEventAction,
   unregisterEventAction,
 } from "@/actions/event/action";
+import { IUser } from "@/interface/user.interface";
 
 interface EventDetailsProps {
   data: EventDetailType;
   token: string;
   isParticipating: boolean;
+  user: IUser | null;
 }
 
 export default function EventDetail({
   data,
   token,
   isParticipating = false,
+  user,
 }: Readonly<EventDetailsProps>) {
   const router = useRouter();
   const { toast } = useToast();
 
   const handleParticipate = async () => {
+    if (!user) {
+      return router.push("/sign-in");
+    }
+
     if (isParticipating) {
       await unregisterEventAction(data.documentId, token);
 

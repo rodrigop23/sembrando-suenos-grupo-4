@@ -16,22 +16,29 @@ import {
 } from "@/actions/activity/actions";
 import { useRouter } from "next/navigation";
 import { useToast } from "@/hooks/use-toast";
+import { IUser } from "@/interface/user.interface";
 
 interface ActivityDetailsProps {
   data: ActivityDetailType;
   token: string;
   isParticipating: boolean;
+  user: IUser | null;
 }
 
 export default function ActivityDetail({
   data: activity,
   token,
   isParticipating = false,
+  user,
 }: Readonly<ActivityDetailsProps>) {
   const router = useRouter();
   const { toast } = useToast();
 
   const handleParticipate = async () => {
+    if (!user) {
+      return router.push("/sign-in");
+    }
+
     if (isParticipating) {
       await unregisterActivityAction(activity.documentId, token);
 

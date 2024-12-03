@@ -28,6 +28,7 @@ export default async function EventPage({
       data={result.data as EventDetailType}
       token={token ?? ""}
       isParticipating={isParticipating}
+      user={user}
     />
   );
 }

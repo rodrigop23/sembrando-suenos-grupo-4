@@ -28,6 +28,7 @@ export default async function ActivityPage({
       data={result.data as ActivityDetailType}
       token={token ?? ""}
       isParticipating={isParticipating}
+      user={user}
     />
   );
 }
