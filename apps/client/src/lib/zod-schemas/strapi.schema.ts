@@ -1,11 +1,12 @@
 import { z } from "zod";
 
-const STRAPI_URL = process.env.NEXT_PUBLIC_STRAPI_URL;
+// const STRAPI_URL = process.env.NEXT_PUBLIC_STRAPI_URL;
 
 export const strapiImageSchema = z.object({
   id: z.number(),
   documentId: z.string(),
-  url: z.string().transform((url) => `${STRAPI_URL}${url}`),
+  url: z.string(),
+  // url: z.string().transform((url) => `${STRAPI_URL}${url}`),
 });
 
 export const linkSchema = z.object({
